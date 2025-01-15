@@ -14,10 +14,10 @@ interface Ad {
 interface AdModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSave: (newAd: Ad) => void;
+  onSave: (ad: Ad) => Promise<void>;
 }
 
-export const AdModal = ({ isOpen, onClose, onSave }: AdModalProps) => {
+export function AdModal({ isOpen, onClose, onSave }: AdModalProps) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [link, setLink] = useState('');
@@ -57,16 +57,14 @@ export const AdModal = ({ isOpen, onClose, onSave }: AdModalProps) => {
           placeholder="Título do anúncio"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="w-full p-2 mb-4 bg-gray-700 rounded-md text-white"
-        />
+          className="w-full p-2 mb-4 bg-gray-700 rounded-md text-white" />
 
         {/* Descrição */}
         <textarea
           placeholder="Descrição do anúncio"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          className="w-full p-2 mb-4 bg-gray-700 rounded-md text-white"
-        />
+          className="w-full p-2 mb-4 bg-gray-700 rounded-md text-white" />
 
         {/* Link */}
         <input
@@ -74,8 +72,7 @@ export const AdModal = ({ isOpen, onClose, onSave }: AdModalProps) => {
           placeholder="Link do anúncio"
           value={link}
           onChange={(e) => setLink(e.target.value)}
-          className="w-full p-2 mb-4 bg-gray-700 rounded-md text-white"
-        />
+          className="w-full p-2 mb-4 bg-gray-700 rounded-md text-white" />
 
         {/* URL da Imagem */}
         <input
@@ -83,8 +80,7 @@ export const AdModal = ({ isOpen, onClose, onSave }: AdModalProps) => {
           placeholder="URL da imagem (opcional)"
           value={image}
           onChange={(e) => setImage(e.target.value)}
-          className="w-full p-2 mb-4 bg-gray-700 rounded-md text-white"
-        />
+          className="w-full p-2 mb-4 bg-gray-700 rounded-md text-white" />
 
         {/* Categoria */}
         <input
@@ -92,8 +88,7 @@ export const AdModal = ({ isOpen, onClose, onSave }: AdModalProps) => {
           placeholder="Categoria (opcional)"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="w-full p-2 mb-4 bg-gray-700 rounded-md text-white"
-        />
+          className="w-full p-2 mb-4 bg-gray-700 rounded-md text-white" />
 
         {/* Anúncio Promovido */}
         <div className="flex items-center mb-4">
@@ -101,8 +96,7 @@ export const AdModal = ({ isOpen, onClose, onSave }: AdModalProps) => {
             type="checkbox"
             checked={isPromoted}
             onChange={(e) => setIsPromoted(e.target.checked)}
-            className="mr-2"
-          />
+            className="mr-2" />
           <span>Anúncio promovido</span>
         </div>
 
@@ -124,4 +118,4 @@ export const AdModal = ({ isOpen, onClose, onSave }: AdModalProps) => {
       </div>
     </div>
   );
-};
+}

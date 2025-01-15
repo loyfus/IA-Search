@@ -16,18 +16,18 @@ export const ActiveToolsSection = ({ activeTools, handleToolStatusChange }: Acti
   const [toolToDeactivate, setToolToDeactivate] = useState<string | null>(null);
 
   const handleDeactivateTool = (toolId: string) => {
-    setToolToDeactivate(toolId); // Abre o modal de confirmação
+    setToolToDeactivate(toolId);
   };
 
   const confirmDeactivation = () => {
     if (toolToDeactivate) {
-      handleToolStatusChange(toolToDeactivate, 'pending'); // Altera o status para "pending"
-      setToolToDeactivate(null); // Fecha o modal
+      handleToolStatusChange(toolToDeactivate, 'pending');
+      setToolToDeactivate(null);
     }
   };
 
   const cancelDeactivation = () => {
-    setToolToDeactivate(null); // Fecha o modal sem fazer nada
+    setToolToDeactivate(null);
   };
 
   return (

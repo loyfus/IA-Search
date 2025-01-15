@@ -23,6 +23,7 @@ type Ad = {
   _id: string;
   title: string;
   description: string;
+  link: string;
 }
 
 // Define the User type
@@ -159,7 +160,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
   }
 
   // Função para adicionar um anúncio
-  const handleAddAd = async (newAd: Ad) => {
+  const handleAddAd = async (newAd: Omit<Ad, '_id'>) => {
     try {
       const token = localStorage.getItem('token')
 
@@ -315,8 +316,10 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
         {activeSection === 'pendingTools' && (
           <PendingToolsSection
             pendingTools={pendingTools}
-            handleToolStatusChange={handleToolStatusChange}
-          />
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            handleToolStatusChange={handleToolStatusChange} handleEditTool={function (toolId: string, updatedTool: { name: string; description?: string; link?: string; categories?: string[] }): void {
+              throw new Error('Function not implemented.')
+            } }          />
         )}
         {activeSection === 'addTool' && ( // Renderiza o formulário de adição de ferramenta
           <AddToolForm
@@ -334,8 +337,10 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
         {activeSection === 'users' && (
           <UsersSection
             users={users}
-            handleUserDelete={handleUserDelete}
-          />
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            handleUserDelete={handleUserDelete} handleUserEdit={function (userId: string, updatedUser: { name: string; email: string }): void {
+              throw new Error('Function not implemented.')
+            } }          />
         )}
       </main>
 

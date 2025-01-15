@@ -14,47 +14,41 @@ interface UsersSectionProps {
 }
 
 export const UsersSection = ({ users, handleUserDelete, handleUserEdit }: UsersSectionProps) => {
-  const [userToDelete, setUserToDelete] = useState<string | null>(null); // Estado para deletar
-  const [userToEdit, setUserToEdit] = useState<User | null>(null); // Estado para editar
-  const [editName, setEditName] = useState(''); // Estado para o nome editado
-  const [editEmail, setEditEmail] = useState(''); // Estado para o email editado
+  const [userToDelete, setUserToDelete] = useState<string | null>(null);
+  const [userToEdit, setUserToEdit] = useState<User | null>(null);
+  const [editName, setEditName] = useState('');
+  const [editEmail, setEditEmail] = useState('');
 
-  // Abre o modal de confirmação para deletar
   const handleDeleteClick = (userId: string) => {
     setUserToDelete(userId);
   };
 
-  // Confirma a deleção
   const confirmDelete = () => {
     if (userToDelete) {
       handleUserDelete(userToDelete);
-      setUserToDelete(null); // Fecha o modal
+      setUserToDelete(null);
     }
   };
 
-  // Cancela a deleção
   const cancelDelete = () => {
-    setUserToDelete(null); // Fecha o modal
+    setUserToDelete(null);
   };
 
-  // Abre o modal de edição
   const handleEditClick = (user: User) => {
     setUserToEdit(user);
-    setEditName(user.name); // Preenche o campo de nome
-    setEditEmail(user.email); // Preenche o campo de email
+    setEditName(user.name);
+    setEditEmail(user.email);
   };
 
-  // Confirma a edição
   const confirmEdit = () => {
     if (userToEdit) {
       handleUserEdit(userToEdit._id, { name: editName, email: editEmail });
-      setUserToEdit(null); // Fecha o modal
+      setUserToEdit(null);
     }
   };
 
-  // Cancela a edição
   const cancelEdit = () => {
-    setUserToEdit(null); // Fecha o modal
+    setUserToEdit(null);
   };
 
   return (

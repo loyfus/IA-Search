@@ -71,7 +71,8 @@ export default function AdminDashboard() {
         setPendingTools(toolsData.tools.filter((tool: Tool) => tool.status === 'pending'))
         setAds(adsData.ads)
         setUsers(usersData.users)
-      } catch (err) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } catch (err: any) {
         setError(`Erro ao carregar dados: ${err.message}`)
         console.error(err)
       } finally {
@@ -113,7 +114,8 @@ export default function AdminDashboard() {
         setPendingTools([...pendingTools, updatedTool]);
         setActiveTools(activeTools.filter((tool) => tool._id !== toolId));
       }
-    } catch (err) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
       setError(`Erro ao atualizar status da ferramenta: ${err.message}`);
       console.error(err);
     }
@@ -140,7 +142,8 @@ export default function AdminDashboard() {
   
       // Atualiza a lista de ferramentas pendentes
       setPendingTools(pendingTools.map(tool => tool._id === toolId ? updatedToolData : tool));
-    } catch (err) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
       setError(`Erro ao editar ferramenta: ${err.message}`);
       console.error(err);
     }
@@ -160,9 +163,13 @@ export default function AdminDashboard() {
       }
 
       setAds(ads.filter((ad) => ad._id !== adId))
-    } catch (err) {
-      setError(`Erro ao excluir anúncio: ${err.message}`)
-      console.error(err)
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(`Erro ao excluir anúncio: ${err.message}`);
+      } else {
+        setError('Erro ao excluir anúncio');
+      }
+      console.error(err);
     }
   }
 
@@ -180,9 +187,13 @@ export default function AdminDashboard() {
       }
 
       setUsers(users.filter((user) => user._id !== userId))
-    } catch (err) {
-      setError(`Erro ao excluir usuário: ${err.message}`)
-      console.error(err)
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(`Erro ao excluir usuário: ${err.message}`);
+      } else {
+        setError('Erro ao excluir usuário');
+      }
+      console.error(err);
     }
   }
 
@@ -212,8 +223,12 @@ export default function AdminDashboard() {
 
       const savedAd = await response.json();
       setAds([...ads, savedAd]); // Atualiza a lista de anúncios
-    } catch (err) {
-      setError(`Erro ao adicionar anúncio: ${err.message}`);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(`Erro ao adicionar anúncio: ${err.message}`);
+      } else {
+        setError('Erro ao adicionar anúncio');
+      }
       console.error(err);
     }
   };
