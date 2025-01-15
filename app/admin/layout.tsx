@@ -252,7 +252,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
 
   return (
     <div className=" text-white flex h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
-      <div className="fixed inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+      <div className="fixed inset-0 bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
       <aside className="relative w-64 bg-gray-800/50 backdrop-blur-xl text-white p-6 border-r border-gray-700/50 flex flex-col justify-between">
         <nav className="space-y-4">
           <button

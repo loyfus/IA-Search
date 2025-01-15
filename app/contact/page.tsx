@@ -22,7 +22,7 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white flex items-center justify-center">
-      <div className="fixed inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+      <div className="fixed inset-0 bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
       <div className="relative container mx-auto px-4 py-16 max-w-4xl">
         {/* Botão para voltar à Home */}
         <Link href="/" className="absolute top-6 left-6 md:left-10 inline-flex items-center text-gray-300 hover:text-white transition-colors duration-200">

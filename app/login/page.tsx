@@ -58,7 +58,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="fixed inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+      <div className="fixed inset-0 bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
       <Link href="/" className="absolute top-8 left-8 text-white hover:text-blue-400 transition-colors">
         <ArrowLeft className="inline-block mr-2" size={20} />
         Voltar para a Home
